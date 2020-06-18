@@ -8,11 +8,12 @@ import { Beast } from '../models/beast';
 })
 export class Tab2Page {
 
-  myBeast: Beast = new Beast("A");
+  myBeast: Beast = new Beast();
   resultMessage: string = "-";
 
   constructor() {
-    this.myBeast.strength = 22;
+    this.myBeast.randomBeast();
+    this.myBeast.trainingPoints = 5;
   }
 
   train(stat: number, statName: string){
@@ -37,15 +38,15 @@ export class Tab2Page {
     this.myBeast.endurance = this.train(this.myBeast.endurance, "endurance");
   }
 
-  trainAttack1(){
+  trainBite(){
     this.myBeast.bite = this.train(this.myBeast.bite, "bite attack"); 
   }
 
-  trainAttack2(){
+  trainClaw(){
     this.myBeast.claw = this.train(this.myBeast.claw, "claw attack");
   }
 
-  trainAttack3(){
+  trainGrapple(){
     this.myBeast.grapple = this.train(this.myBeast.grapple, "grapple attack");
   }
 

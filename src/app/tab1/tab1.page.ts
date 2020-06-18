@@ -8,9 +8,9 @@ import { Beast } from '../models/beast';
 })
 export class Tab1Page {
 
-  myBeast: Beast = new Beast('A');
+  myBeast: Beast = new Beast();
 
   constructor() {
-    this.myBeast.strength = 22;
+    this.myBeast.randomBeast();
   }
 }

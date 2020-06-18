@@ -9,16 +9,16 @@ import { Beast } from '../models/beast';
 })
 export class Tab3Page {
 
-  myBeast: Beast = new Beast('A');
-  otherBeast: Beast = new Beast ('B');
+  myBeast: Beast = new Beast();
+  otherBeast: Beast = new Beast ();
   num: number;
   resultMessage = "-";
   page: TabsPage = new TabsPage();
   attackResult: String = "";
 
   constructor() {
-    this.getRandomBeast();
-    this.myBeast.strength = 3;
+    this.myBeast.randomBeast();
+    this.otherBeast.randomBeast();
   }
 
   onChangeHandler(event: string){
@@ -29,6 +29,11 @@ export class Tab3Page {
   }
 
   attackRound(){
+
+    if (this.myBeast.health <= 0 || this.otherBeast.health <= 0){
+      return;
+    }
+    
     if(this.myBeast.selectedAttack == ""){
       this.resultMessage = "no attack selected"
     } else {
@@ -36,6 +41,12 @@ export class Tab3Page {
       this.attack(this.myBeast, this.otherBeast);
       this.otherBeast.selectedAttack = this.randomlySelectAttack();
       this.attack(this.otherBeast, this.myBeast);
+    }
+    
+    if(this.myBeast.health <= 0){
+      this.resultMessage = this.otherBeast.name + " wins!";
+    } else if (this.otherBeast.health <= 0){
+      this.resultMessage = this.myBeast.name + " wins!";
     }
   }
 
@@ -53,9 +64,7 @@ export class Tab3Page {
         this.attackResult = this.grappleAttack(beast1, beast2);
         break;
     }
-    // this.attackResult = this.biteAttack(beast1, beast2);
-    // this.num = this.page.randomNumber(1);
-    // console.log(this.num);
+    
     if(this.attackResult == "hit"){
       this.resultMessage += " and hit! ";
     } else {
@@ -78,6 +87,9 @@ export class Tab3Page {
         this.num = 0;
       }
       beast2.health -= this.num;
+      if(beast2.health < 0 ){
+        beast2.health = 0;
+      }
       console.log("damage: " + this.num);
       return "hit";
     }
@@ -95,6 +107,9 @@ export class Tab3Page {
         this.num = 0;
       }
       beast2.health -= this.num;
+      if(beast2.health < 0 ){
+        beast2.health = 0;
+      }
       console.log("damage: " + this.num);
       return "hit";
     }
@@ -112,6 +127,9 @@ export class Tab3Page {
         this.num = 0;
       }
       beast2.health -= this.num;
+      if(beast2.health < 0 ){
+        beast2.health = 0;
+      }
       console.log("damage: " + this.num);
       return "hit";
     }
@@ -129,28 +147,5 @@ export class Tab3Page {
         return "Grapple";
     }
 
-  }
-
-  getRandomBeast(){
-    this.num = this.page.randomNumber(4);
-    console.log(this.num);
-
-    switch(this.num){
-      case 0:
-          this.otherBeast.imageURL = "../assets/monA.jpg";
-          break;            
-      case 1:
-          this.otherBeast.imageURL = "../assets/monB.jpg";
-          break;
-      case 2:
-          this.otherBeast.imageURL = "../assets/monC.jpg";
-          break;            
-      case 3:
-          this.otherBeast.imageURL = "../assets/monD.jpg";
-          break;
-      case 4:
-          this.otherBeast.imageURL = "../assets/monE.jpg";
-          break;
-    }
   }
 }

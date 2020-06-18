@@ -21,36 +21,41 @@
   </ion-card>
 
   <ion-card class="info_box">
-    <div class="stat_line">
-      <h4 class="stat_name">Strength:</h4>
-      <h3 class="stat_value">{{myBeast.strength}}</h3>
-      <ion-button color="dark" (click)="trainStrength()">Train!</ion-button>
-    </div><br>
-    <div class="stat_line">
-      <h4 class="stat_name">Speed:</h4>
-      <h3 class="stat_value">{{myBeast.speed}}</h3>
-      <ion-button color="dark" (click)="trainSpeed()">Train!</ion-button>
-    </div><br>
-    <div class="stat_line">
-      <h4 class="stat_name">Endurance:</h4>
-      <h3 class="stat_value">{{myBeast.endurance}}</h3>
-      <ion-button color="dark" (click)="trainEndurance()">Train!</ion-button>
-    </div><br>
-    <div class="stat_line">
-      <h4 class="stat_name">Attack 1:</h4>
-      <h3 class="stat_value">{{myBeast.bite}}</h3>
-      <ion-button color="dark" (click)="trainAttack1()">Train!</ion-button>
-    </div><br>
-    <div class="stat_line">
-      <h4 class="stat_name">Attack 2:</h4>
-      <h3 class="stat_value">{{myBeast.claw}}</h3>
-      <ion-button color="dark" (click)="trainAttack2()">Train!</ion-button>
-    </div><br>
-    <div class="stat_line">
-      <h4 class="stat_name">Attack 3:</h4>
-      <h3 class="stat_value">{{myBeast.grapple}}</h3>
-      <ion-button color="dark" (click)="trainAttack3()">Train!</ion-button>
-    </div>
+
+    <table width="100%">
+      <tr>
+      <td class="stat_name"><h4>Strength</h4></td>
+      <td><h3>{{myBeast.strength}}</h3></td>
+      <td><ion-button color="dark" (click)="trainStrength()">Train!</ion-button></td>
+      </tr>
+      <tr>
+        <td class="stat_name"><h4>Speed</h4></td>
+        <td><h3>{{myBeast.speed}}</h3></td>
+        <td><ion-button color="dark" (click)="trainSpeed()">Train!</ion-button></td>
+      </tr>
+      <tr>
+        <td class="stat_name"><h4>Endurance</h4></td>
+        <td><h3>{{myBeast.endurance}}</h3></td>
+        <ion-button color="dark" (click)="trainEndurance()">Train!</ion-button>
+      </tr>
+      <tr>
+        <td class="stat_name"><h4>Bite</h4></td>
+        <td><h3>{{myBeast.bite}}</h3></td>
+        <ion-button color="dark" (click)="trainBite()">Train!</ion-button>
+      </tr>
+      <tr>
+        <td class="stat_name"><h4>Claw</h4></td>
+        <td><h3>{{myBeast.claw}}</h3></td>
+        <ion-button color="dark" (click)="trainClaw()">Train!</ion-button>        
+      </tr>
+      <tr>
+        <td class="stat_name"><h4>Grapple</h4></td>
+        <td><h3>{{myBeast.grapple}}</h3></td>
+        <ion-button color="dark" (click)="trainGrapple()">Train!</ion-button>
+      </tr>
+
+    </table>
+
   </ion-card>
 
 </div>
